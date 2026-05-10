@@ -79,22 +79,38 @@ def get_transcript_text(video_id, target_language='en'):
 def label_transcript(transcript: str, channel_list: list) -> dict:
     # channel_list is a list of channel names from config
     taxonomy = [
-        "Model Releases & Updates", 
-        "Research Papers & Techniques",
-        "Industry News & Business", 
-        "Tools, APIs & Frameworks",
-        "Tutorials & How-tos", 
-        "Ethics, Safety & Alignment",
-        "Podcasts & Discussions", 
-        "Benchmarks & Evaluations",
-        "Humour / Speculation"
-    ]
-    prompt = f"""You are an analyst. Given a transcript from a YouTube video about LLMs/AI, return a JSON object with:
-                - "summary": a short summary of the content of the video. Including the main focus, key points made, and the conclusion.
-                - "speakers": list of people speaking (include host and any guests). If the host is the channel owner, just say "Host".
-                - "topics": list of topics from {json.dumps(taxonomy)}.
-                - "related_channels": list of objects {{"channel": "...", "relation": "mention/collaboration/critique"}} for the channel names from this list: {json.dumps(channel_list)}.
-                Only use the given taxonomy and channel list. Be concise."""
+            "Model Releases & Updates", 
+            "Research Papers & Techniques",
+            "Industry News & Business", 
+            "Tools, APIs & Frameworks",
+            "Tutorials & How-tos", 
+            "Ethics, Safety & Alignment",
+            "Podcasts & Discussions", 
+            "Benchmarks & Evaluations",
+            "Humour / Speculation"
+        ]
+        
+    system_prompt = f"""
+            You are an analyst watching a YouTube video about large language models and AI.
+
+            Return a JSON object with the following fields:
+            - "summary": A one‑paragraph summary of the video's main focus, key points, and the creator's conclusion or recommendation.
+            - "speakers": A list of people who speak (host and any guests). For the channel owner, use "Host" unless a name is given.
+            - "topics": A list of the most relevant categories from the taxonomy: {json.dumps(taxonomy)}. Pick 1‑2.
+            - "entities": {{
+                "models": ["model names explicitly mentioned, e.g., GPT-4o, Claude 3, Llama 3"],
+                "papers": ["paper titles or arxiv IDs mentioned"],
+                "companies": ["company names mentioned, e.g., OpenAI, Google, Meta, Anthropic"],
+                "tools": ["tools or frameworks mentioned, e.g., LangChain, vLLM, Ollama"]
+            }}. Only include items that are clearly referenced in the transcript. Use empty lists if none.
+            - "stance": A short phrase capturing the overall viewpoint. If relevant, note attitude toward open‑source, safety, or commercialisation. Examples: "Cautiously optimistic about open-source", "Criticial of closed-source model pricing", "Neutral tutorial". If no clear stance, use "Neutral".
+
+            Important:
+            - Only use the given taxonomy list and the tracked channel list (for later use, keep this list: {json.dumps(channel_list)}).
+            - Be concise, factual, and use only information from the transcript.
+            - Output ONLY the JSON object, no other text.
+            """
+    
     client = OpenAI(
         api_key=DEEPSEEK_API_KEY,
         base_url="https://api.deepseek.com")
@@ -102,8 +118,8 @@ def label_transcript(transcript: str, channel_list: list) -> dict:
     response = client.chat.completions.create(
         model="deepseek-chat",
         messages=[
-            {"role": "system", "content": prompt},
-            {"role": "user", "content": transcript[:5000]},
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": transcript[:10000]},
         ],
         stream=False,
         response_format={

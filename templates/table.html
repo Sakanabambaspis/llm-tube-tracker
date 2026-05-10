@@ -4,21 +4,98 @@
 <body>
   <h1>LLM YouTube Tracker</h1>
   <p>Last updated: {{ last_updated }}</p>
+  
+  <h2>Latest Videos</h2>
   <table border="1">
-    <tr><th>Channel</th><th>Title</th><th>Speakers</th><th>Topics</th><th>Related Channels</th></tr>
+    <!-- ADDED: Published column -->
+    <tr><th>Published</th><th>Channel</th><th>Title</th><th>Speakers</th><th>Topics</th></tr>
     {% for v in videos %}
     <tr>
+      <td>{{ v.published_at }}</td>
       <td>{{ v.channel_name }}</td>
       <td><a href="{{ v.url }}">{{ v.title }}</a></td>
       <td>{{ v.summary.speakers | join(', ') }}</td>
       <td>{{ v.summary.topics | join(', ') }}</td>
-      <td>
-        {% for r in v.summary.related_channels %}
-          {{ r.channel }} ({{ r.relation }}){% if not loop.last %}<br>{% endif %}
-        {% endfor %}
-      </td>
     </tr>
     {% endfor %}
   </table>
+
+  <!-- ADDED: Channel Profiles Section -->
+  {% if profiles %}
+  <h2>Channel Profiles</h2>
+  <ul>
+    {% for channel, p in profiles.items() %}
+    <li>
+      <strong>{{ channel }}</strong><br>
+      Topics: {{ p.topics.keys() | join(', ') }}<br>
+      Models: {{ p.models | join(', ') }} <br>
+      Papers: {{ p.papers | join(', ') }}<br>
+      Companies: {{ p.companies | join(', ') }} | Tools: {{ p.tools | join(', ') }}<br>
+      Stances: {{ p.stances | join(', ') }}
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <h2>Channel Thematic Relationships (LLM Themes)</h2>
+  <ul>
+    {% for rel in channel_relations %}
+      <li>
+      <strong>{{ rel.channel1 }}</strong> and <strong>{{ rel.channel2 }}</strong>
+      – thematic similarity: {{ rel.overall_similarity }}
+      <br>
+      
+      <!-- Checks if the sum of all lists inside the dictionary is greater than 0 -->
+      {% set total_entities = rel.shared_entities.values() | map('length') | sum %}
+      {% if total_entities > 0 %}
+        {% for type, items in rel.shared_entities.items() if items %}
+          {{ type | capitalize }}: {{ items | join(', ') }}<br>
+        {% endfor %}
+      {% else %}
+        No shared entities<br>
+      {% endif %}
+      
+      {% if rel.shared_stances %}
+        Common stances: {{ rel.shared_stances | join(', ') }}
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  
+  <h2>Complete Database Raw Data</h2>
+  
+  {% if all_db_records %}
+    <!-- Scrollable container for the entire table -->
+    <div style="max-height: 600px; overflow-y: auto; overflow-x: auto; border: 1px solid #ccc;">
+      <table border="1" style="min-width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="background-color: #f2f2f2;">
+            {% for column_name in all_db_records[0].keys() %}
+              <th style="padding: 8px; text-align: left; position: sticky; top: 0; background: #f2f2f2; z-index: 10;">
+                {{ column_name }}
+              </th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for record in all_db_records %}
+            <tr>
+              {% for value in record.values() %}
+                <td style="padding: 0; vertical-align: top;">
+                  <!-- WRAPPER DIV ADDED HERE for individual cell scrolling -->
+                  <div style="max-height: 150px; max-width: 350px; overflow: auto; padding: 8px; box-sizing: border-box;">
+                    {{ value }}
+                  </div>
+                </td>
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <p>No records found in the database.</p>
+  {% endif %}
+  
 </body>
 </html>
