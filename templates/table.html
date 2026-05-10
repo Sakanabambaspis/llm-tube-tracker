@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><title>LLM Tube Radar</title></head>
+<body>
+  <h1>LLM YouTube Tracker</h1>
+  <p>Last updated: {{ last_updated }}</p>
+  <table border="1">
+    <tr><th>Channel</th><th>Title</th><th>Speakers</th><th>Topics</th><th>Related Channels</th></tr>
+    {% for v in videos %}
+    <tr>
+      <td>{{ v.channel_name }}</td>
+      <td><a href="{{ v.url }}">{{ v.title }}</a></td>
+      <td>{{ v.summary.speakers | join(', ') }}</td>
+      <td>{{ v.summary.topics | join(', ') }}</td>
+      <td>
+        {% for r in v.summary.related_channels %}
+          {{ r.channel }} ({{ r.relation }}){% if not loop.last %}<br>{% endif %}
+        {% endfor %}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>

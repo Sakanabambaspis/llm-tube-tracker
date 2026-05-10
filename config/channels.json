@@ -1,0 +1,22 @@
+{
+  "tracked_channels": [
+    {
+      "id": "UCbfYPyITQ-7l4upoX8nvctg",
+      "name": "Two Minute Papers",
+      "short_name": "TwoMinutePapers",
+      "active": true
+    },
+    {
+      "id": "UCNJ1Ymd5yFuUPtn21xtRbbw",
+      "name": "AI Explained",
+      "short_name": "aiexplained-official",
+      "active": true
+    },
+    {
+      "id": "UCC-lyoTfSrcJzA1ab3APAgw",
+      "name": "LangChain",
+      "short_name": "LangChain",
+      "active": true
+    }
+  ]
+}
