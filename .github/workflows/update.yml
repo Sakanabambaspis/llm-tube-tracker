@@ -4,6 +4,9 @@ on:
     - cron: '0 */6 * * *'   # runs every 6 hours
   workflow_dispatch:         # lets you run manually
 
+permissions:
+  contents: write # important, gives write permission
+
 jobs:
   update:
     runs-on: ubuntu-latest
