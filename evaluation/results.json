@@ -1,0 +1,13 @@
+{
+  "topic_precision": 0.7,
+  "topic_recall": 0.9,
+  "topic_f1": 0.78,
+  "speaker_precision": 0.8,
+  "speaker_recall": 0.7,
+  "speaker_f1": 0.7333333333333333,
+  "models_jaccard": 0.579047619047619,
+  "papers_jaccard": 0.4,
+  "companies_jaccard": 0.6799999999999999,
+  "tools_jaccard": 0.33650793650793653,
+  "stance_accuracy": 0.8
+}

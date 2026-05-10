@@ -87,7 +87,8 @@ def label_transcript(transcript: str, channel_list: list) -> dict:
             "Ethics, Safety & Alignment",
             "Podcasts & Discussions", 
             "Benchmarks & Evaluations",
-            "Humour / Speculation"
+            "Speculation",
+            "Others"
         ]
         
     system_prompt = f"""

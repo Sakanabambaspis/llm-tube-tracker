@@ -1,0 +1,175 @@
+{
+  "4nQnhjimB4Y": {
+    "summary": "The video evaluates the performance and safety of a new 'instant' AI model from OpenAI, specifically referencing GPT 5.5 and its improvements over GPT 5.3. Dr. Koa Eher highlights significant progress in reducing hallucination rates and achieving expert-level performance on the 'Troubleshooting bench' for biological protocols and cybersecurity tasks. However, the analysis reveals a critical concern: while the model is more intelligent, its internal refusal mechanisms are weaker against adversarial prompts, necessitating the use of external 'bouncer' classifiers. The creator concludes that while the speed and capability of these instant models are invaluable, safety should ideally be addressed at the model level rather than through secondary patches.",
+    "speakers": [
+      "Host",
+      "Dr. Koa Eher"
+    ],
+    "topics": [
+      "Benchmarks & Evaluations",
+      "Ethics, Safety & Alignment"
+    ],
+    "entities": {
+      "models": [
+        "GPT 5.5",
+        "GPT 5.3",
+        "DeepSeek"
+      ],
+      "papers": [
+        "Troubleshooting bench",
+        "Humanity's last exam",
+        "Healthbench"
+      ],
+      "companies": [
+        "OpenAI",
+        "Lambda",
+        "NVIDIA",
+        "DeepSeek AI"
+      ],
+      "tools": [
+        "Lambda GPU cloud"
+      ]
+    },
+    "stance": "Impressed by intelligence and speed, but concerned about safety 'patches' replacing model-level alignment."
+  },
+  "trEM9OKr5Sc": {
+    "summary": "Alexander Shoshenko, Head of Applied AI Research at Ramp, discusses the architecture and evolution of Ramp Sheets, an agentic spreadsheet editor designed to automate finance workflows. The conversation covers the transition from process-mining Loom videos to having language models directly manipulate Excel via function calls, as well as the implementation of a self-monitoring agentic loop using Ramp's internal 'Inspect' coding agent. Additionally, they explore recent Ramp Labs experiments involving recursive language models (RLMs) communicating via KV cache and the use of steering vectors on open-weight models like Gemma to control conceptual focus.",
+    "speakers": [
+      "Host",
+      "Alexander Shoshenko"
+    ],
+    "topics": [
+      "Podcasts & Discussions",
+      "Tools, APIs & Frameworks"
+    ],
+    "entities": {
+      "models": [
+        "Claude",
+        "Opus",
+        "ChatGPT",
+        "Gemma",
+        "Qwen"
+      ],
+      "papers": [],
+      "companies": [
+        "Ramp",
+        "OpenAI",
+        "Anthropic",
+        "Google"
+      ],
+      "tools": [
+        "Ramp Sheets",
+        "Inspect",
+        "Excel",
+        "SpreadJS",
+        "Modal",
+        "n8n",
+        "Retool",
+        "Pandas",
+        "Graphviz",
+        "OpenAI agent SDK",
+        "LangChain",
+        "DataDog",
+        "GitHub",
+        "Slack"
+      ]
+    },
+    "stance": "Optimistic about agentic architectures and applied AI experimentation"
+  },
+  "D2TNYboZEak": {
+    "summary": "The speaker argues that AI agents will elevate human roles across various industries, using finance workers and junior developers as examples. As agents take over routine, lower-level tasks such as writing basic code, human workers will transition into supervisory roles focused on reviewing outputs, providing feedback, and planning future strategic requirements.",
+    "speakers": [
+      "Host"
+    ],
+    "topics": [
+      "Industry News & Business",
+      "Podcasts & Discussions"
+    ],
+    "entities": {
+      "models": [],
+      "papers": [],
+      "companies": [],
+      "tools": []
+    },
+    "stance": "Optimistic about AI agents up-leveling the workforce"
+  },
+  "-pnZ6d8ZUJI": {
+    "summary": "This video explores the mathematical structure underlying large language models, demonstrating how meaning and human biases are encoded as spatial coordinates derived from internet text. Using the E5 Large model and UMAP visualization, the host illustrates that AI inherently absorbs societal biases regarding gender, jobs, religion, and politics. The creator concludes that safety techniques like RLHF only mask these biases at the output layer rather than removing them, arguing that AI models can never be truly value-neutral because they are fundamentally mirrors of human civilization rather than objective oracles.",
+    "speakers": [
+      "Host"
+    ],
+    "topics": [
+      "Ethics, Safety & Alignment",
+      "Research Papers & Techniques"
+    ],
+    "entities": {
+      "models": [
+        "GPT-5",
+        "Cloud",
+        "Gemini",
+        "E5 Large"
+      ],
+      "papers": [
+        "lipstick on a pig"
+      ],
+      "companies": [],
+      "tools": [
+        "UMAP",
+        "RLHF"
+      ]
+    },
+    "stance": "Critical of AI neutrality claims, emphasizing that models reflect human biases inherent in their training data."
+  },
+  "QVJcdfkRpH8": {
+    "summary": "The video provides a comprehensive analysis of Anthropic's Claude Opus 4.7 release, highlighting its industry-leading performance in professional tasks and 'vibe coding' while addressing controversies surrounding its 'adaptive thinking' compute constraints. The creator notes that while the model shows significant progress over Opus 4.6, it suffers from intentional capability reductions in cybersecurity and inconsistent benchmark results compared to Google's Gemini 3 series. The video concludes by framing the current AI landscape as a deep-seated rivalry between Anthropic's Dario Amodei and OpenAI's Greg Brockman, suggesting that competition and massive infrastructure investment are driving an unprecedented era of AI development despite growing pains in model transparency and reliability.",
+    "speakers": [
+      "Host",
+      "Greg Brockman"
+    ],
+    "topics": [
+      "Model Releases & Updates",
+      "Industry News & Business"
+    ],
+    "entities": {
+      "models": [
+        "Claude Opus 4.7",
+        "Claude Opus 4.6",
+        "Claude Opus 4.5",
+        "Claude Opus 4",
+        "Claude Mythos Preview",
+        "Gemini 3.1 Pro",
+        "Gemini 3 Flash",
+        "GBC 5.4",
+        "GPC 5.4",
+        "GPT 5.4 Pro",
+        "GPT 5.4 Cyber",
+        "Codeex"
+      ],
+      "papers": [
+        "Opus 4.7 system card"
+      ],
+      "companies": [
+        "Anthropic",
+        "OpenAI",
+        "Google",
+        "Alphabet",
+        "AMD",
+        "Vidok",
+        "The Verge",
+        "Wall Street Journal"
+      ],
+      "tools": [
+        "Simple Bench",
+        "lmconsil.ai",
+        "Claude Code",
+        "Arc AGI2",
+        "routines",
+        "ultra review",
+        "dispatch",
+        "Spud",
+        "Assembly AI"
+      ]
+    },
+    "stance": "Critically analytical of corporate claims and compute-driven model regressions"
+  }
+}

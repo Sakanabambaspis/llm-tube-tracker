@@ -17,6 +17,18 @@
       "name": "LangChain",
       "short_name": "LangChain",
       "active": true
+    },
+    {
+      "id": "UCSI7h9hydQ40K5MJHnCrQvw",
+      "name": "No Priors: AI, Machine Learning, Tech, & Startups",
+      "short_name": "NoPriorsPodcast",
+      "active": true
+    },
+    {
+      "id": "UCMfvQiZIoVFjuMJBkLXVkaQ",
+      "name": "Codeically",
+      "short_name": "Codeically",
+      "active": true
     }
   ]
 }
